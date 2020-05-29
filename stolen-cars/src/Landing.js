@@ -5,11 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
-import Formview from './form'
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -41,7 +37,7 @@ export default function SimpleCard() {
           Don't worry, register your details here
         </Typography>
       </CardContent>
-      <Link to="/Formview">
+      <Link to="/form">
         <CardActions>
             <Button size="small">Learn more</Button>
         </CardActions>

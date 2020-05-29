@@ -3,6 +3,12 @@ import './App.css';
 import Welcome from './Welcome'
 import Landing from './Landing'
 import { Grid } from '@material-ui/core';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Formview from './form'
 
 class App extends React.Component {
 
@@ -11,24 +17,23 @@ class App extends React.Component {
     this.state = { users: [] }
   }
   
-
-  componentDidMount(){
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({users}))
-  }
-
   render() {
     return(
-      <div className="App">
+      <Router>
         <Welcome />
-        <Grid container spacing = {24} style={{padding:24}} >
-          <Grid item xs={12} sm={6} lg={4} xl={3}>
-            <Landing />
-          </Grid>
-        </Grid>
-       
-      </div>
+        <Switch>
+          <Route exact path="/">
+            <Grid container spacing = {10} style={{padding:24}} >
+              <Grid item xs={12} sm={6} lg={4} xl={3}>
+                <Landing />
+              </Grid>
+            </Grid>
+          </Route>
+          <Route path="/form">
+            <Formview />
+          </Route>
+        </Switch>
+      </Router>
     )
   };
 }

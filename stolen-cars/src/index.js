@@ -5,18 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {
   BrowserRouter as Router,
-  Route,
 } from "react-router-dom";
-import Formview from './form'
 
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Route path = "/" component = {App}>
-        <Route path = "form" component = {Formview} />
-      </Route>
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
