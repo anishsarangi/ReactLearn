@@ -43,9 +43,25 @@ router.get('/all',async(req,res)=>{
     }
 });
 
-router.post('/mark_as_resolved',async(req,res)=>{
-    var _id = req.body.id;
+router.put('/update_status',async(req,res)=>{
+    try{
+        console.log(req.body.id)
+        const _id = req.body.id;
+        const update = { status: "completed" };
+        const update_police = {avail_status:true}
+        const update_new_police = {avail_status:false}
+        let update_car = await Cars.findOneAndUpdate({_id}, update,{new:true});
+        
+        let police_assigned = await Police.findOneAndUpdate({_id:update_car.police_assigned},update_police,{new:true})
 
+        let cars = await Cars.findOneAndUpdate({police_assigned:null,status:"pending"}, {police_assigned,status: "assigned"}, {new:true})
+        let police_assigned_again = await Police.findOneAndUpdate({_id:update_car.police_assigned},update_new_police,{new:true})
+        console.log(cars,police_assigned_again)
+        res.status(200).send({status:200});
+    }catch(e){
+        console.log(e)
+        res.status(400).send(e);
+    }
 });
 
 function get_assigned_police(foundCars){

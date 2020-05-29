@@ -1,24 +1,31 @@
 import React from 'react';
 import { InputLabel, FormHelperText, FormControl, Input} from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import './showAllCars.css';
 
-
+import { useHistory } from "react-router-dom";
 class Formview extends React.Component {
 
+    constructor(props) {
+      super(props);
+      this.state = { formData: {}};
+    }
+    changeHandler = (event) => {
+        let event_target = event.target.id
+        let evet_val = event.target.value
+        this.setState((state) => {
+            state.formData[event_target] = evet_val;
+        })
+    }
+
     sendData(){
-        // Can use state for getting data
-        var temp_data= {
-            car_number :"OR-qq3212556",
-            car_owner : "S2fw",
-            contact_number: 8441346,
-        }
         fetch('/cars/add',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(temp_data)
+            body: JSON.stringify(this.state.formData)
           }).then(function(response) {
             console.log(response)
           })
@@ -26,15 +33,25 @@ class Formview extends React.Component {
 
     render(){
         return(
-            <div style={{margin:'auto',width:'50%'}}>
+            <div className="box" style={{margin:'auto',width:'50%', display: 'flex', flexDirection:'column'}}>
                 <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+                    <InputLabel htmlFor="carNo">Car Number</InputLabel>
+                    <Input id="car_number" aria-describedby="my-helper-text" onChange={this.changeHandler} />
+                    <FormHelperText id="my-helper-text"></FormHelperText>
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="owner">Car Owner</InputLabel>
+                    <Input id="car_owner" aria-describedby="my-helper-text" onChange={this.changeHandler} />
+                    <FormHelperText id="my-helper-text"></FormHelperText>
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="contactNo">Contact Number</InputLabel>
+                    <Input id="contact_number" aria-describedby="my-helper-text" onChange={this.changeHandler} />
+                    <FormHelperText id="my-helper-text"></FormHelperText>
                 </FormControl>
                 <div style={{marginTop:50}}>
                     <Button variant="contained" color="primary" onClick={()=>this.sendData()}>
-                        Primary
+                        Submit
                     </Button>
                 </div>
             </div>

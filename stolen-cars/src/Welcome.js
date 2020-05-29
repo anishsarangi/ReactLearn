@@ -2,7 +2,9 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import {
+    Link
+  } from "react-router-dom";
 
 class Welcome extends React.Component{
     constructor(props){
@@ -11,17 +13,15 @@ class Welcome extends React.Component{
         //this.handleEvent = this.handleEvent.bind(this)
     }
 
-    handleEvent = ()=> {
-        this.setState((state)=>({isToggleOn:!state.isToggleOn}))
-    }
-
     render(){
         return (
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <Typography color="inherit">
-                            Stolen Cars sample Application
+                        <Typography color="inherit" >
+                            <Link to='/' >
+                                Stolen Cars sample Application
+                            </Link>
                         </Typography>
                     </Toolbar>
                 </AppBar>

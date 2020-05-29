@@ -1,7 +1,7 @@
 .container {
     margin: auto;
     padding: 1.5rem;
-    width: 50%;
+    width: 60%;
 }
 
 .card {
@@ -14,7 +14,19 @@
     box-shadow: 0 1px 3px rgba(83, 91, 96, 0.23);
 }
 
+.box{
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(83, 91, 96, 0.23);
+}
+
 .itemView {
     padding: 0.5rem 1rem;
 
+}
+.hide{
+    display: none !important;
+}
+
+.show{
+    display: block;
 }

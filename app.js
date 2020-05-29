@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 require('./db/connection');
 
 var carsRouter = require('./routes/cars');
-var usersRouter = require('./routes/police');
+var policeRouter = require('./routes/police');
 var indexRouter = require('./routes/index');
 var app = express();
 
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',indexRouter)
 app.use('/cars', carsRouter);
-app.use('/users', usersRouter);
+app.use('/police',policeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,6 +36,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+  console.log(err)
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
