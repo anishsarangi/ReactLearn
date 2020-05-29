@@ -24,9 +24,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+export default function SimpleCard(props) {
+  
   const classes = useStyles();
-
+  
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -37,7 +38,7 @@ export default function SimpleCard() {
           Don't worry, register your details here
         </Typography>
       </CardContent>
-      <Link to="/form">
+      <Link to={props.type} >
         <CardActions>
             <Button size="small">Learn more</Button>
         </CardActions>

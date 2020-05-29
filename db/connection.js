@@ -1,12 +1,7 @@
-const { Sequelize } = require('sequelize');
+const mongoose = require('mongoose');
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './temp_database'
+mongoose.connect('mongodb://127.0.0.1:27017/stolen-cars-db',{
+    useNewUrlParser:true,
+    useCreateIndex: true,
+    useFindAndModify: false
 });
-
-const Model = Sequelize.Model;
-
-
-
-module.exports= sequelize;

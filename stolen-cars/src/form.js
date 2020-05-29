@@ -8,9 +8,9 @@ class Formview extends React.Component {
     sendData(){
         // Can use state for getting data
         var temp_data= {
-            car_number :"OR-0234556",
-            car_owner : "Anish Sarangi",
-            contact_number: 8908443346,
+            car_number :"OR-qq3212556",
+            car_owner : "S2fw",
+            contact_number: 8441346,
         }
         fetch('/cars/add',{
             method: 'POST',

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Welcome from './Welcome'
 import Landing from './Landing'
+import ShowAllCars from './ShowAllCars'
 import { Grid } from '@material-ui/core';
 import {
   BrowserRouter as Router,
@@ -25,12 +26,18 @@ class App extends React.Component {
           <Route exact path="/">
             <Grid container spacing = {10} style={{padding:24}} >
               <Grid item xs={12} sm={6} lg={4} xl={3}>
-                <Landing />
+                <Landing type="/form" />
+              </Grid>
+              <Grid item xs={12} sm={6} lg={4} xl={3}>
+                <Landing type="/showall"/>
               </Grid>
             </Grid>
           </Route>
           <Route path="/form">
             <Formview />
+          </Route>
+          <Route path="/showall">
+            <ShowAllCars />
           </Route>
         </Switch>
       </Router>
