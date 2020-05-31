@@ -26,10 +26,10 @@ class App extends React.Component {
           <Route exact path="/">
             <Grid container spacing = {10} style={{padding:24}} >
               <Grid item xs={12} sm={6} lg={4} xl={3}>
-                <Landing type="/form" />
+                <Landing type="/form" title = "Your car is stolen !!" details="Don't worry, register your details here"/>
               </Grid>
               <Grid item xs={12} sm={6} lg={4} xl={3}>
-                <Landing type="/showall"/>
+                <Landing type="/showall" title = "Want to know your car status" details="Don't worry, click below to see details"/>
               </Grid>
             </Grid>
           </Route>

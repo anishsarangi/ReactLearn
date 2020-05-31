@@ -30,3 +30,7 @@
 .show{
     display: block;
 }
+
+.align-center{
+    text-align: center;
+}

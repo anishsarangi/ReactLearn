@@ -18,11 +18,13 @@ class Welcome extends React.Component{
             <div>
                 <AppBar position="static">
                     <Toolbar>
+                    <Link to='/' >
                         <Typography color="inherit" >
-                            <Link to='/' >
+                            
                                 Stolen Cars sample Application
-                            </Link>
+                           
                         </Typography>
+                        </Link>
                     </Toolbar>
                 </AppBar>
             </div>

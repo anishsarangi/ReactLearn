@@ -27,7 +27,11 @@ class Formview extends React.Component {
             },
             body: JSON.stringify(this.state.formData)
           }).then(function(response) {
-            console.log(response)
+            if(response.status==201){
+                alert("Added successfully")
+            }else{
+                alert("some error occured")
+            }
           })
     }
 

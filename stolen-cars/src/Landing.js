@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -24,18 +25,18 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard(props) {
+export default function Landing(props) {
   
   const classes = useStyles();
-  
+
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
-            Your car is stolen
+          {props.title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Don't worry, register your details here
+          {props.details}
         </Typography>
       </CardContent>
       <Link to={props.type} >

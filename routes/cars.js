@@ -45,19 +45,15 @@ router.get('/all',async(req,res)=>{
 
 router.put('/update_status',async(req,res)=>{
     try{
-        console.log(req.body.id)
         const _id = req.body.id;
         const update = { status: "completed" };
         const update_police = {avail_status:true}
-        const update_new_police = {avail_status:false}
         let update_car = await Cars.findOneAndUpdate({_id}, update,{new:true});
-        
         let police_assigned = await Police.findOneAndUpdate({_id:update_car.police_assigned},update_police,{new:true})
-
-        let cars = await Cars.findOneAndUpdate({police_assigned:null,status:"pending"}, {police_assigned,status: "assigned"}, {new:true})
-        let police_assigned_again = await Police.findOneAndUpdate({_id:update_car.police_assigned},update_new_police,{new:true})
-        console.log(cars,police_assigned_again)
-        res.status(200).send({status:200});
+        let status = await check_pendings()
+        var cars_new = await Cars.find({})
+        var result_new = await get_assigned_police(cars_new)
+        res.status(200).send({status:200,result:result_new});
     }catch(e){
         console.log(e)
         res.status(400).send(e);
@@ -75,6 +71,20 @@ function get_assigned_police(foundCars){
         })
     })
             
+}
+
+function check_pendings(){
+    return new Promise(async(resolve,reject)=>{
+        car_avail = await Cars.find({status:"pending"}, null, { limit: 1 });
+        police_avail = await Police.find({avail_status:true}, null, { limit: 1 });
+        if(car_avail.length==1 && police_avail.length==1){
+            let car_reassigned = await Cars.findOneAndUpdate({_id:car_avail[0]._id},{police_assigned:police_avail[0],status:"assigned"},{new:true})
+            let police_reassigned = await Police.findOneAndUpdate({_id:police_avail[0]._id},{avail_status:false},{new:true})
+            resolve(true)
+        }else{
+            resolve(false)
+        }
+    })
 }
 
 function return_data(car){
