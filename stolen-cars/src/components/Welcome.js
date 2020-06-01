@@ -7,12 +7,6 @@ import {
   } from "react-router-dom";
 
 class Welcome extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {isToggleOn: true}
-        //this.handleEvent = this.handleEvent.bind(this)
-    }
-
     render(){
         return (
             <div>

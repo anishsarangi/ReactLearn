@@ -1,15 +1,15 @@
 import React from 'react';
-import './App.css';
-import Welcome from './Welcome'
-import Landing from './Landing'
-import ShowAllCars from './ShowAllCars'
+import './css/App.css';
+import Welcome from './components/Welcome'
+import Landing from './components/Landing'
+import ShowAllCars from './components/ShowAllCars'
 import { Grid } from '@material-ui/core';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import Formview from './form'
+import Formview from './components/form'
 
 class App extends React.Component {
 

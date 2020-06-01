@@ -1,9 +1,8 @@
 import React from 'react';
 import { InputLabel, FormHelperText, FormControl, Input} from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import './showAllCars.css';
+import '../css/showAllCars.css';
 
-import { useHistory } from "react-router-dom";
 class Formview extends React.Component {
 
     constructor(props) {
@@ -27,7 +26,7 @@ class Formview extends React.Component {
             },
             body: JSON.stringify(this.state.formData)
           }).then(function(response) {
-            if(response.status==201){
+            if(response.status===201){
                 alert("Added successfully")
             }else{
                 alert("some error occured")
